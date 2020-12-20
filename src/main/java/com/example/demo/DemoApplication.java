@@ -6,6 +6,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 
+import com.example.demo.aop.TargetObject;
+
 @SpringBootApplication
 public class DemoApplication {
 
@@ -13,9 +15,9 @@ public class DemoApplication {
 
 	public static void main(String[] args) {
 		ConfigurableApplicationContext context = SpringApplication.run(DemoApplication.class, args);
-		log.info("Application NAME: {}", context.getApplicationName());
-		log.info("123");
-		System.out.println(456);
+		TargetObject targetObject = context.getBean(TargetObject.class);
+		targetObject.hello("Hello World !!!");
+		targetObject.foo();
 	}
 
 }
